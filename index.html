@@ -1,1 +1,31 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Key Copy</title><style>body{margin:0;font-family:Arial;background:linear-gradient(135deg,#1f2937,#000);display:flex;justify-content:center;align-items:center;height:100vh}.card{background:#ffffff12;padding:30px;border-radius:18px;text-align:center;color:#fff;max-width:420px;width:90%}.key{background:#111827;color:#00ff99;padding:15px;border-radius:10px;word-break:break-all;margin:15px 0}button{padding:12px 24px;border:none;border-radius:10px;background:#00eaff;font-weight:bold;cursor:pointer}</style></head><body><div class="card"><h2>🔑 KEY</h2><div class="key" id="k">hajdjhwvajkdorbvwbajdifjvrheiekdbr</div><button onclick="navigator.clipboard.writeText(document.getElementById('k').innerText).then(()=>alert('Key Copied!'))">Copy Key</button></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devil Key</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:linear-gradient(135deg,#000,#1a0000,#000);height:100vh;display:flex;justify-content:center;align-items:center}
+.card{width:90%;max-width:450px;background:#141414;border:2px solid #f00;border-radius:18px;padding:25px;text-align:center;box-shadow:0 0 30px red}
+h1{color:#ff1a1a;text-shadow:0 0 15px red;margin-bottom:20px}
+.key{background:#111;color:#fff;border:1px solid red;border-radius:10px;padding:15px;word-break:break-all}
+button{margin-top:20px;width:100%;padding:14px;font-size:18px;font-weight:bold;color:#fff;background:linear-gradient(90deg,#f00,#600);border:none;border-radius:10px;cursor:pointer}
+#msg{color:#0f6;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="card">
+<div style="font-size:48px">😈</div>
+<h1>DEVIL KEY</h1>
+<div class="key" id="key">aejsjqhvrbjdjsobabdhhfhtkcpdhvrhfujdb</div>
+<button onclick="copyKey()">📋 Copy Key</button>
+<div id="msg"></div>
+</div>
+<script>
+function copyKey(){
+const t=document.getElementById('key').innerText;
+navigator.clipboard.writeText(t).then(()=>document.getElementById('msg').innerText='✅ Key Copied Successfully!');
+}
+</script>
+</body></html>
