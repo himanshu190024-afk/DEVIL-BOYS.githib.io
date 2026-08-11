@@ -5,27 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Devil Key</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:linear-gradient(135deg,#000,#1a0000,#000);height:100vh;display:flex;justify-content:center;align-items:center}
-.card{width:90%;max-width:450px;background:#141414;border:2px solid #f00;border-radius:18px;padding:25px;text-align:center;box-shadow:0 0 30px red}
-h1{color:#ff1a1a;text-shadow:0 0 15px red;margin-bottom:20px}
-.key{background:#111;color:#fff;border:1px solid red;border-radius:10px;padding:15px;word-break:break-all}
-button{margin-top:20px;width:100%;padding:14px;font-size:18px;font-weight:bold;color:#fff;background:linear-gradient(90deg,#f00,#600);border:none;border-radius:10px;cursor:pointer}
-#msg{color:#0f6;margin-top:15px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;background:radial-gradient(circle at center,#3a0000 0%,#120000 35%,#050505 75%);color:white;overflow:hidden}
+body:before{content:"😈";position:fixed;font-size:280px;opacity:.035;z-index:0}
+.card{position:relative;z-index:2;width:92%;max-width:430px;padding:35px 25px;text-align:center;border:1px solid #ff2020;border-radius:22px;background:rgba(10,0,0,.88);box-shadow:0 0 15px #ff0000,0 0 45px rgba(255,0,0,.35),inset 0 0 30px rgba(255,0,0,.08)}
+.devil{font-size:70px;filter:drop-shadow(0 0 15px red);margin-bottom:8px}
+h1{color:#ff3030;font-size:30px;letter-spacing:3px;text-shadow:0 0 12px red;margin-bottom:8px}
+.subtitle{color:#aaa;font-size:13px;margin-bottom:25px}
+.key-box{display:flex;align-items:center;gap:8px;padding:13px;border-radius:12px;border:1px solid #700000;background:#080808;box-shadow:inset 0 0 12px rgba(255,0,0,.15)}
+#key{flex:1;color:#ff4444;font-size:13px;font-weight:bold;word-break:break-all;text-align:left}
+button{margin-top:22px;width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#ff0000,#750000);color:white;font-size:16px;font-weight:bold;letter-spacing:1px;cursor:pointer;box-shadow:0 0 18px rgba(255,0,0,.5);transition:.2s}
+button:hover{transform:scale(1.03);box-shadow:0 0 30px rgba(255,0,0,.8)}
+button:active{transform:scale(.97)}
+#status{height:20px;margin-top:14px;color:#ff5555;font-size:13px}
 </style>
 </head>
 <body>
 <div class="card">
-<div style="font-size:48px">😈</div>
+<div class="devil">😈</div>
 <h1>DEVIL KEY</h1>
-<div class="key" id="key">aejsjqhvrbjdjsobabdhhfhtkcpdhvrhfujdb</div>
-<button onclick="copyKey()">📋 Copy Key</button>
-<div id="msg"></div>
+<div class="subtitle">Your private access key</div>
+<div class="key-box"><div id="key">kdjakjevvfdjkwnfkksbabbdjkfkfbbtkf</div></div>
+<button onclick="copyKey()">⚡ COPY KEY ⚡</button>
+<div id="status"></div>
 </div>
 <script>
 function copyKey(){
-const t=document.getElementById('key').innerText;
-navigator.clipboard.writeText(t).then(()=>document.getElementById('msg').innerText='✅ Key Copied Successfully!');
+ const key=document.getElementById("key").innerText;
+ const status=document.getElementById("status");
+ navigator.clipboard.writeText(key).then(()=>{
+   status.innerText="✓ Key copied successfully!";
+ }).catch(()=>{
+   const temp=document.createElement("textarea");
+   temp.value=key;document.body.appendChild(temp);temp.select();
+   document.execCommand("copy");temp.remove();
+   status.innerText="✓ Key copied successfully!";
+ });
+ setTimeout(()=>status.innerText="",2500);
 }
 </script>
-</body></html>
+</body>
+</html>
