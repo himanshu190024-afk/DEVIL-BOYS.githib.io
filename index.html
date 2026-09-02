@@ -5,128 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DEVIL KEY</title>
 <style>
-    * { box-sizing: border-box; }
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:
-            radial-gradient(circle at 50% 35%, #3a0000 0%, #120000 35%, #050505 75%);
-        font-family: Arial, Helvetica, sans-serif;
-        color: #fff;
-        overflow: hidden;
-    }
-
-    .card {
-        width: min(92%, 520px);
-        padding: 34px 24px;
-        text-align: center;
-        border: 1px solid #ff1a1a;
-        border-radius: 18px;
-        background: rgba(10, 0, 0, 0.88);
-        box-shadow: 0 0 18px #ff0000, inset 0 0 25px rgba(255,0,0,.15);
-    }
-
-    .devil {
-        font-size: 64px;
-        line-height: 1;
-        filter: drop-shadow(0 0 12px red);
-        margin-bottom: 8px;
-    }
-
-    h1 {
-        margin: 0 0 8px;
-        color: #ff2020;
-        font-size: 30px;
-        letter-spacing: 5px;
-        text-shadow: 0 0 12px red;
-    }
-
-    .subtitle {
-        color: #aaa;
-        font-size: 13px;
-        margin-bottom: 24px;
-        letter-spacing: 2px;
-    }
-
-    .key-box {
-        padding: 16px;
-        border-radius: 10px;
-        border: 1px dashed #ff3333;
-        background: #080808;
-        color: #ff4b4b;
-        font-size: 16px;
-        line-height: 1.5;
-        word-break: break-all;
-        box-shadow: inset 0 0 15px rgba(255,0,0,.12);
-        margin-bottom: 18px;
-        user-select: all;
-    }
-
-    button {
-        width: 100%;
-        border: 0;
-        border-radius: 10px;
-        padding: 14px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        color: #fff;
-        background: linear-gradient(135deg, #ff0000, #850000);
-        cursor: pointer;
-        box-shadow: 0 0 15px rgba(255,0,0,.65);
-        transition: .2s;
-    }
-
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 25px rgba(255,0,0,.9);
-    }
-
-    button:active { transform: scale(.98); }
-
-    #status {
-        height: 18px;
-        margin-top: 12px;
-        color: #ff5555;
-        font-size: 13px;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  font-family:Arial,sans-serif; color:#fff; background:
+  radial-gradient(circle at 50% 20%,#5b0000 0,#210000 28%,#050505 70%);
+  overflow:hidden;
+}
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(255,0,0,.035) 13px 14px);
+}
+.card{
+  width:min(92%,520px); padding:38px 28px; text-align:center;
+  background:rgba(10,10,10,.9); border:1px solid #8b0000;
+  border-radius:18px; box-shadow:0 0 35px rgba(255,0,0,.25), inset 0 0 25px rgba(255,0,0,.06);
+}
+h1{
+  margin:0 0 8px; font-size:42px; letter-spacing:8px;
+  color:#ff2222; text-shadow:0 0 10px #f00,0 0 28px #900;
+}
+.subtitle{color:#aaa; margin-bottom:28px; letter-spacing:3px}
+.key{
+  padding:18px 14px; border-radius:10px; background:#050505;
+  border:1px solid #4d0000; color:#ff5a5a; word-break:break-all;
+  font-family:monospace; font-size:17px; box-shadow:0 0 15px rgba(255,0,0,.15);
+}
+button{
+  margin-top:22px; width:100%; padding:15px; border:0; border-radius:10px;
+  background:linear-gradient(90deg,#780000,#e00000,#780000); color:white;
+  font-size:17px; font-weight:bold; letter-spacing:3px; cursor:pointer;
+  box-shadow:0 0 18px rgba(255,0,0,.3); transition:.2s;
+}
+button:hover{transform:scale(1.02); box-shadow:0 0 28px rgba(255,0,0,.55)}
+#status{height:20px;margin-top:12px;color:#ff7777;font-size:13px}
 </style>
 </head>
 <body>
-
-<div class="card">
-    <div class="devil">😈</div>
-    <h1>DEVIL KEY</h1>
-    <div class="subtitle">SECRET ACCESS TOKEN</div>
-
-    <div class="key-box" id="key">
-        hdjskajsbvdvfbskoaoaowjebfbndks lakhs
-    </div>
-
-    <button onclick="copyKey()">⚡ COPY KEY ⚡</button>
+  <div class="card">
+    <h1>DEVIL</h1>
+    <div class="subtitle">⚠ SECRET KEY ⚠</div>
+    <div class="key" id="key">jdiaksjbdhdjskoaodjhfhfbrjrkr</div>
+    <button onclick="copyKey()">☠ COPY KEY ☠</button>
     <div id="status"></div>
-</div>
+  </div>
 
 <script>
-function copyKey() {
-    const key = document.getElementById("key").innerText.trim();
-
-    navigator.clipboard.writeText(key).then(() => {
-        document.getElementById("status").innerText = "✓ KEY COPIED";
-    }).catch(() => {
-        const temp = document.createElement("textarea");
-        temp.value = key;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        temp.remove();
-        document.getElementById("status").innerText = "✓ KEY COPIED";
-    });
+function copyKey(){
+  const key=document.getElementById("key").textContent;
+  navigator.clipboard.writeText(key).then(()=>{
+    document.getElementById("status").textContent="✓ KEY COPIED";
+  }).catch(()=>{
+    const t=document.createElement("textarea");
+    t.value=key; document.body.appendChild(t); t.select();
+    document.execCommand("copy"); t.remove();
+    document.getElementById("status").textContent="✓ KEY COPIED";
+  });
 }
 </script>
-
 </body>
 </html>
